@@ -7,9 +7,9 @@ def send_msg(status,sent,error):
 	datetime_ist = datetime.now(IST)
 	timestamp = datetime_ist.strftime('%Y:%m:%d %H:%M:%S %Z %z')
 
-	WEBHOOK_URL = "https://discordapp.com/api/webhooks/"
+	WEBHOOK_URL = "" #Change this to your personal webhook URL
 	webhook = DiscordWebhooks(WEBHOOK_URL)
-	webhook.set_footer(text='-- Om Thakur')
+	webhook.set_footer(text='Om Thakur')
 
 	if status=="info":
 		webhook.set_content(title="Report")

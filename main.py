@@ -12,11 +12,11 @@ import schedule
 from pytz import timezone
 from datetime import datetime 
 
-URL = "example.com"
+URL = "practicetestautomation.com/practice-test-login/"
 headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36"}
 
-
-USE_PROXY = sys.argv[1]
+USE_PROXY=input("Do you want to use proxy(1 for yes/0 for no)")
+# USE_PROXY = sys.argv[1]
 SUBMITTED_COUNT = 0
 
 tz = timezone('Asia/Kolkata')
@@ -49,9 +49,12 @@ def submitForm(ip):
 	if ip_port == "0":
 		# No proxy
 		try:
-			r = s.get(URL + "login.php?nick=%s"%(uname),headers=headers)
-			r = s.post(URL + "login.php?nick=%s"%(uname),headers=headers,data=data)
-			r = s.post(URL + "confirmed.php?",headers=headers)
+			# r = s.get(URL + "login.php?nick=%s"%(uname),headers=headers)
+			# r = s.post(URL + "login.php?nick=%s"%(uname),headers=headers,data=data)
+			# r = s.post(URL + "confirmed.php?",headers=headers)
+			r = s.get(URL + "/practice-test-login/"%(uname),headers=headers)
+			r = s.post(URL + "/practice-test-login/"%(uname),headers=headers,data=data)
+			r = s.post(URL + "/practice-test-login/",headers=headers)
 		except Exception as e:
 			# IP blocked or site is down
 			print("Connection failed with no proxy")
@@ -63,9 +66,12 @@ def submitForm(ip):
 	else:
 		# Use Proxy
 		try:
-			r = s.get(URL + "login.php?nick=%s"%(uname),headers=headers,proxies=proxyDict)
-			r = s.post(URL + "login.php?nick=%s"%(uname),headers=headers,proxies=proxyDict,data=data)
-			r = s.post(URL + "confirmed.php?",headers=headers,proxies=proxyDict)
+			# r = s.get(URL + "login.php?nick=%s"%(uname),headers=headers,proxies=proxyDict)
+			# r = s.post(URL + "login.php?nick=%s"%(uname),headers=headers,proxies=proxyDict,data=data)
+			# r = s.post(URL + "confirmed.php?",headers=headers,proxies=proxyDict)
+			r = s.get(URL + "/practice-test-login/"%(uname),headers=headers)
+			r = s.post(URL + "/practice-test-login/"%(uname),headers=headers,data=data)
+			r = s.post(URL + "/practice-test-login/",headers=headers)
 		except Exception as e:
 			print("Error - ",e)
 			logger.error("Error - %s"%e)
